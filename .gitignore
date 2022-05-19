@@ -21,9 +21,6 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-### Eclipse Patch ###
-# Eclipse Core
-
 ### Eclipse ###
 .metadata
 bin/
