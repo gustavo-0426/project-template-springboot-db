@@ -1,5 +1,0 @@
----
-spring:
-  profiles: test
-
-## Include your configuration to Testing Environment
