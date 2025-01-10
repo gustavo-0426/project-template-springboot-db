@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+# *******************************************
+# CONFIGURATION H2 DATABASE (OPTIONAL)
+# *******************************************
+spring:
+  jpa:
+    show-sql: false
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testDb
+    username: sa
+
+# *******************************************
+# CONFIGURATION MONGO DATABASE (OPTIONAL)
+# *******************************************
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: testdb
+#Note: In the pom file the dependency should be removed spring-boot-starter-data-jpa
+
+
+# *******************************************
+# CONFIGURATION SQL SERVER DATABASE
+# *******************************************
+#spring:
+#  datasource:
+#    url: jdbc:sqlserver://${DB_HOST}:${DB_PORT};databaseName=${DB_DATABASE}
+#    username: ${DB_USERNAME}
+#    password: ${DB_PASSWORD}
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      dialect: org.hibernate.dialect.SQLServer2012Dialect
+#      ddl-auto: update
+
+api:
+  version: v1
+
+# swagger = http://{host}:{port}/{api.version}/template/swagger-ui/index.html
+springdoc:
+  swagger-ui:
+    path: /${api.version}/template/
+
+logging:
+  level:
+    org:
+      springdoc: DEBUG
