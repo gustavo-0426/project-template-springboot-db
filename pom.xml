@@ -14,6 +14,7 @@
 	<description>This is a template for spring boot project</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
 	</properties>
 
