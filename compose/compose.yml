@@ -1,0 +1,40 @@
+services:
+  api-template:
+    build:
+      context: ../
+      dockerfile: compose/Dockerfile
+    container_name: api-template
+    restart: always
+    networks:
+      - network-template
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      SERVER_PORT: ${PORT}
+    ports:
+      - "9091:${PORT}"
+    depends_on:
+      - db-template
+
+  db-template:
+    image: db-image-docker
+    container_name: db-template
+    restart: always
+    networks:
+      - network-template
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+#    volumes:
+#      - db:/var/opt/mssql
+#    environment:
+#      ACCEPT_EULA: "Y"
+#      MSSQL_SA_PASSWORD: ${DB_PASSWORD}
+#    ports:
+#      - "1433:1433"
+networks:
+  network-template:
+#volumes:
+#  mssql-db:

@@ -1,9 +1,0 @@
-version: '3.9'
-services:
-  template:
-    build: .
-    image: gustavo0426/template-spring-boot:1.0.0
-    container_name: template-spring-boot
-    restart: always
-    ports:
-      - 9090:9090
