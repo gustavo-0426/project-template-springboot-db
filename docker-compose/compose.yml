@@ -2,11 +2,9 @@ services:
   api-template:
     build:
       context: ../
-      dockerfile: compose/Dockerfile
+      dockerfile: docker-compose/Dockerfile
     container_name: api-template
     restart: always
-    networks:
-      - network-template
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
@@ -16,6 +14,8 @@ services:
       SERVER_PORT: ${PORT}
     ports:
       - "9091:${PORT}"
+    networks:
+      - network-template
     depends_on:
       - db-template
 
@@ -23,10 +23,10 @@ services:
     image: db-image-docker
     container_name: db-template
     restart: always
-    networks:
-      - network-template
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - network-template
 #    volumes:
 #      - db:/var/opt/mssql
 #    environment:
@@ -36,5 +36,7 @@ services:
 #      - "1433:1433"
 networks:
   network-template:
+    name: network-template
 #volumes:
 #  mssql-db:
+#    name: mssql-db
