@@ -1,42 +1,47 @@
 services:
-  api-template:
+  project:
     build:
       context: ../
       dockerfile: docker-compose/Dockerfile
-    container_name: api-template
+    image: gustavo0426/project-api-template:latest
+    container_name: project-api
     restart: always
     environment:
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      DB_DATABASE: ${DB_DATABASE}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      SERVER_PORT: ${PORT}
+      DB_USERNAME: ${DATABASE_USERNAME}
+      DB_PASSWORD: ${DATABASE_PASSWORD}
+      DB_DATABASE: ${DATABASE_NAME}
+      DB_HOST: ${DATABASE_HOST}
+      DB_PORT: ${DATABASE_PORT}
+      SERVER_PORT: ${SERVER_PORT}
     ports:
-      - "9091:${PORT}"
+      - "9091:${SERVER_PORT}"
     networks:
-      - network-template
+      - project_network
     depends_on:
-      - db-template
+      - postgres-db
 
-  db-template:
-    image: db-image-docker
-    container_name: db-template
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: project-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "5432:5432"
     networks:
-      - network-template
-#    volumes:
-#      - db:/var/opt/mssql
-#    environment:
-#      ACCEPT_EULA: "Y"
-#      MSSQL_SA_PASSWORD: ${DB_PASSWORD}
-#    ports:
-#      - "1433:1433"
+      - project_network
+      - shared_pgadmin_network
+    volumes:
+      - project_postgres_data:/var/lib/postgresql/data
+
 networks:
-  network-template:
-    name: network-template
-#volumes:
-#  mssql-db:
-#    name: mssql-db
+  project_network:
+    name: project_network
+    driver: bridge
+  shared_pgadmin_network:
+    external: true
+
+volumes:
+  project_postgres_data:
