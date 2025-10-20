@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:21-jdk AS build
 
 LABEL org.opencontainers.image.authors="gustavoprasca@hotmail.com"
 
@@ -9,7 +9,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     update-ca-certificates
 
-WORKDIR /api
+WORKDIR /app/api-template
 
 # Copiar solo pom.xml para cachear dependencias
 COPY ../pom.xml .
@@ -26,6 +26,9 @@ RUN mvn clean package -DskipTests -B
 
 FROM eclipse-temurin:21-jre-alpine
 
+# Variable de entorno para puerto
+ENV SERVER_PORT=
+
 # Crear usuario no-root para seguridad
 RUN addgroup -g 1001 -S appuser && \
     adduser -S -D -H -u 1001 -s /sbin/nologin -G appuser appuser
@@ -33,10 +36,12 @@ RUN addgroup -g 1001 -S appuser && \
 WORKDIR /home/api-template
 
 # Copiar JAR y cambiar permisos
-COPY --from=build /api/target/*.jar ./api-template.jar
+COPY --from=build /app/api-template/target/*.jar ./api-template.jar
 
 # Cambiar a usuario no-root
 USER appuser
 
-EXPOSE 9091
+# Exponer el puerto configurado
+EXPOSE ${SERVER_PORT}
+
 ENTRYPOINT ["java","-jar","./api-template.jar"]
