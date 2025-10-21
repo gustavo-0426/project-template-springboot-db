@@ -30,8 +30,6 @@
 
 ---
 
-
-
 ## 📋 Tabla de Contenidos
 
 - [🚀 Características](#características)
@@ -54,7 +52,6 @@
 <br>
 
 ---
-
 
 ## <a id="requisitos-previos"></a>📋 Requisitos Previos
 
@@ -81,13 +78,13 @@ cd mi-nuevo-proyecto
 ### 2️⃣ Configurar variables básicas
 ```bash
 
-# Edita docker-compose/.env con tus valores
-SERVER_PORT=9091
+# Edita docker-compose/.env con estos valores
+SERVER_PORT=9999
 DATABASE_HOST=postgres-db
 DATABASE_PORT=5432
-DATABASE_NAME=mi_base_datos
-DATABASE_USERNAME=mi_usuario
-DATABASE_PASSWORD=mi_password
+DATABASE_NAME=test-database
+DATABASE_USERNAME=test_user
+DATABASE_PASSWORD=test_password
 
 ```
 
@@ -102,7 +99,7 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 ### 4️⃣ Verificar funcionamiento
 
-- **Aplicación:** http://localhost:9091/v1/template
+- **Aplicación:** http://localhost:9999/v1/template
 
 <br>
 
@@ -110,7 +107,7 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 ## <a id="contacto"></a>📞 Contacto
 
-- **Autor:** [NOMBRE_AUTOR]
+- **Autor:** Gustavo Castro
 - **Template Version:** 1.0.0
 - **Spring Boot Version:** 3.4.1
 - **Java Version:** 21
