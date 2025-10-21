@@ -67,7 +67,7 @@
 
 ---
 
-## <a id="inicio-rapido"></a>⚡ Inicio Rápido
+## <a id="inicio-rapido"></a>⚡ Inicio Rápido (5 minutos)
 
 ### 1️⃣ Clonar Repositorio
 ```bash
@@ -84,14 +84,14 @@ cd mi-nuevo-proyecto
 # Edita docker-compose/.env con tus valores
 SERVER_PORT=9091
 DATABASE_HOST=postgres-db
-DATABASE_PORT=5432 (Configuración establecida para PostgreSQL por defecto)
+DATABASE_PORT=5432
 DATABASE_NAME=mi_base_datos
 DATABASE_USERNAME=mi_usuario
 DATABASE_PASSWORD=mi_password
 
 ```
 
-### 3️⃣ Ejecutar con Docker
+### 3️⃣ Ejecutar con Docker Compose
 ```bash
 # Construir y ejecutar
 docker-compose -f docker-compose/compose.yml up -d
@@ -102,7 +102,7 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 ### 4️⃣ Verificar funcionamiento
 
-- **Aplicación:** http://localhost:9091
+- **Aplicación:** http://localhost:9091/v1/template
 
 <br>
 
