@@ -68,11 +68,14 @@
 ## <a id="inicio-rapido"></a>⚡ Inicio Rápido (5 minutos)
 
 ### 1️⃣ Clonar Repositorio
-```bash
-# Clonar repositorio de GitHub
-git clone https://github.com/gustavo-0426/[APP_NAME].git mi-nuevo-proyecto
 
-# Ingresar a carpeta del proyecto
+#### Clonar repositorio de GitHub:
+```bash
+git clone https://github.com/gustavo-0426/[APP_NAME].git mi-nuevo-proyecto
+```
+
+#### Ingresar a carpeta del proyecto:
+```bash
 cd mi-nuevo-proyecto
 ```
 
@@ -89,17 +92,48 @@ DATABASE_PASSWORD=test_password
 ```
 
 ### 3️⃣ Ejecutar con Docker Compose
-```bash
-# Construir y ejecutar
-docker-compose -f docker-compose/compose.yml up -d
 
-# Ver logs
+#### Construir y ejecutar:
+```bash
+docker-compose -f docker-compose/compose.yml up -d
+```
+
+#### Verificar contenedores activos:
+```bash
+docker-compose -f docker-compose/compose.yml ps
+```
+
+#### Ver logs en tiempo real:
+```bash
 docker-compose -f docker-compose/compose.yml logs -f
 ```
 
 ### 4️⃣ Verificar funcionamiento
 
+#### Acceder a los endpoints:
 - **Aplicación:** http://localhost:9999/v1/template
+- **Swagger UI:** http://localhost:9999/v1/template/swagger-ui/index.html
+
+### 🔧 Comandos útiles adicionales
+
+#### Detener servicios:
+```bash
+docker-compose -f docker-compose/compose.yml down
+```
+
+#### Reconstruir imágenes:
+```bash
+docker-compose -f docker-compose/compose.yml build --no-cache
+```
+
+#### Ver logs de un servicio específico:
+```bash
+docker-compose -f docker-compose/compose.yml logs [APP_NAME]
+```
+
+```bash
+docker-compose -f docker-compose/compose.yml logs postgres-db
+```
 
 <br>
 
