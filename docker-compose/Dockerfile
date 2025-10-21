@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:21-jdk AS build
 
 LABEL org.opencontainers.image.authors="gustavoprasca@hotmail.com"
 
@@ -26,6 +26,9 @@ RUN mvn clean package -DskipTests -B
 
 FROM eclipse-temurin:21-jre-alpine
 
+# Variable de entorno para puerto
+ENV SERVER_PORT=
+
 # Crear usuario no-root para seguridad
 RUN addgroup -g 1001 -S appuser && \
     adduser -S -D -H -u 1001 -s /sbin/nologin -G appuser appuser
@@ -38,5 +41,7 @@ COPY --from=build /app/api-template/target/*.jar ./api-template.jar
 # Cambiar a usuario no-root
 USER appuser
 
-EXPOSE 9090
+# Exponer el puerto configurado
+EXPOSE ${SERVER_PORT}
+
 ENTRYPOINT ["java","-jar","./api-template.jar"]
