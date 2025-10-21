@@ -13,7 +13,7 @@
 
 ### Variables esenciales a reemplazar (Manual):
 
-- `[APP_NAME]` → Nombre de la aplicación (debe ser el mismo nombre del repositorio, ejemplos: "template-spring-boot", "rental-inventory-api-mysql", "test-product-microservice-postgres")
+- `[APP_NAME]` → Nombre de la aplicación (nombre del repositorio, ejemplos: "template-spring-boot", "rental-inventory-api-mysql", "test-product-microservice-postgres")
 
 ### Variables de entorno (.env):
 
@@ -30,13 +30,12 @@
 
 ---
 
-
-
 ## 📋 Tabla de Contenidos
 
 - [🚀 Características](#características)
 - [📋 Requisitos Previos](#requisitos-previos)
 - [⚡ Inicio Rápido](#inicio-rapido)
+- [📚 API Documentation](#api-documentation)
 - [📞 Contacto](#contacto)
 
 <br>
@@ -54,7 +53,6 @@
 <br>
 
 ---
-
 
 ## <a id="requisitos-previos"></a>📋 Requisitos Previos
 
@@ -80,14 +78,13 @@ cd mi-nuevo-proyecto
 
 ### 2️⃣ Configurar variables básicas
 ```bash
-
-# Edita docker-compose/.env con tus valores
-SERVER_PORT=9091
+# docker-compose/.env valores por default para base de datos postgres
+SERVER_PORT=9999
 DATABASE_HOST=postgres-db
 DATABASE_PORT=5432
-DATABASE_NAME=mi_base_datos
-DATABASE_USERNAME=mi_usuario
-DATABASE_PASSWORD=mi_password
+DATABASE_NAME=test-database
+DATABASE_USERNAME=test_user
+DATABASE_PASSWORD=test_password
 
 ```
 
@@ -102,7 +99,27 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 ### 4️⃣ Verificar funcionamiento
 
-- **Aplicación:** http://localhost:9091/v1/template
+- **Aplicación:** http://localhost:9999/v1/template
+
+<br>
+
+---
+
+## <a id="api-documentation"></a>📚 API Documentation
+
+### 🔗 Endpoints principales
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/v1/template` | Endpoint de prueba |
+| `GET` | `/v1/template/swagger-ui/index.html` | Endpoint de documentación |
+
+### 📖 Swagger UI
+
+Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
+
+- **Swagger UI:** [http://localhost:9999/v1/template/swagger-ui/index.html](http://localhost:9999/v1/template/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://localhost:9999/v3/api-docs](http://localhost:9999/v3/api-docs)
 
 <br>
 
@@ -110,7 +127,7 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 ## <a id="contacto"></a>📞 Contacto
 
-- **Autor:** [NOMBRE_AUTOR]
+- **Autor:** Gustavo Castro
 - **Template Version:** 1.0.0
 - **Spring Boot Version:** 3.4.1
 - **Java Version:** 21
