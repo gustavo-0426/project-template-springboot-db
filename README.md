@@ -1,3 +1,5 @@
+<br>
+
 # 🚀 [APP_NAME]
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.java.net/projects/jdk/21/)
@@ -5,7 +7,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Template base** para proyectos Spring Boot con conexión a base de datos. Estructura mínima lista para desarrollar tu aplicación.
+**Aplicación** para proyectos Spring Boot con conexión a base de datos. Estructura mínima lista para desarrollar tu aplicación.
 
 ## 📝 Instrucciones para personalizar esta plantilla
 
@@ -15,44 +17,33 @@
 
 - `[APP_NAME]` → Nombre de la aplicación (nombre del repositorio, ejemplos: "template-spring-boot", "rental-inventory-api-mysql", "test-product-microservice-postgres")
 
-### Variables de entorno (.env):
-
-- `SERVER_PORT` → Puerto de la aplicación (rango: 9090-9999)
-- `DATABASE_HOST` → Host de la base de datos (nombre del servicio Docker)
-- `DATABASE_PORT` → Puerto de la base de datos (5432 para PostgreSQL)
-- `DATABASE_NAME` → Nombre de la base de datos
-- `DATABASE_USERNAME` → Usuario de la base de datos
-- `DATABASE_PASSWORD` → Contraseña de la base de datos  
-
 **Después de personalizar, elimina esta sección de instrucciones.**
 
-<br>
-
 ---
+<br>
 
 ## 📋 Tabla de Contenidos
 
 - [🚀 Características](#características)
 - [📋 Requisitos Previos](#requisitos-previos)
-- [⚡ Inicio Rápido](#inicio-rapido)
+- [⚡ Inicio Rápido (5 minutos)](#inicio-rapido)
+- [💾 Configuración de Bases de Datos](settings-README.md)
 - [📚 API Documentation](#api-documentation)
 - [📞 Contacto](#contacto)
 
-<br>
-
 ---
+<br>
 
 ## <a id="características"></a>🚀 Características
 
-- ✅ **Estructura base** Spring Boot 3.4.1 + Java 21
-- 💾 **Conexión a base de datos** (PostgreSQL por defecto)
-- 🐳 **Docker Compose** configurado y listo
-- 🔧 **Variables de entorno** para configuración
+- ✅ **Aplicación** Spring Boot 3.4.1 + Java 21
+- 💾 **Soporte base de datos** PostgreSQL
+- 🐳 **Docker Compose** configurado para orquestación de servicios
+- 🔧 **Variables de entorno** para configuración sensible y mantenible
 - 📦 **Dockerfile** optimizado con multi-stage build
 
-<br>
-
 ---
+<br>
 
 ## <a id="requisitos-previos"></a>📋 Requisitos Previos
 
@@ -61,9 +52,8 @@
 - **Docker** y **Docker Compose**
 - **Git**
 
-<br>
-
 ---
+<br>
 
 ## <a id="inicio-rapido"></a>⚡ Inicio Rápido (5 minutos)
 
@@ -79,19 +69,7 @@ git clone https://github.com/gustavo-0426/[APP_NAME].git mi-nuevo-proyecto
 cd mi-nuevo-proyecto
 ```
 
-### 2️⃣ Configurar variables básicas
-```bash
-# docker-compose/.env valores por default para base de datos postgres
-SERVER_PORT=9999
-DATABASE_HOST=postgres-db
-DATABASE_PORT=5432
-DATABASE_NAME=test-database
-DATABASE_USERNAME=test_user
-DATABASE_PASSWORD=test_password
-
-```
-
-### 3️⃣ Ejecutar con Docker Compose
+### 2️⃣ Ejecutar Aplicación con Docker Compose
 
 #### Construir y ejecutar:
 ```bash
@@ -108,36 +86,17 @@ docker-compose -f docker-compose/compose.yml ps
 docker-compose -f docker-compose/compose.yml logs -f
 ```
 
-### 4️⃣ Verificar funcionamiento
+### 3️⃣ Verificar funcionamiento
 
 #### Acceder a los endpoints:
 - **Aplicación:** http://localhost:9999/v1/template
 - **Swagger UI:** http://localhost:9999/v1/template/swagger-ui/index.html
-
-### 🔧 Comandos útiles adicionales
-
-#### Detener servicios:
-```bash
-docker-compose -f docker-compose/compose.yml down
-```
-
-#### Reconstruir imágenes:
-```bash
-docker-compose -f docker-compose/compose.yml build --no-cache
-```
-
-#### Ver logs de un servicio específico:
-```bash
-docker-compose -f docker-compose/compose.yml logs [APP_NAME]
-```
-
-```bash
-docker-compose -f docker-compose/compose.yml logs postgres-db
-```
-
-<br>
+- **PgAdmin Postgres:** http://localhost:8080
+  - **Email:** `gustavoprasca@hotmail.com`
+  - **Password:** `admin`
 
 ---
+<br>
 
 ## <a id="api-documentation"></a>📚 API Documentation
 
@@ -155,17 +114,22 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
 - **Swagger UI:** [http://localhost:9999/v1/template/swagger-ui/index.html](http://localhost:9999/v1/template/swagger-ui/index.html)
 - **OpenAPI JSON:** [http://localhost:9999/v3/api-docs](http://localhost:9999/v3/api-docs)
 
-<br>
+### 🗄️ Administración de Base de Datos
+
+Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
+
+- **pgAdmin:** [http://localhost:5050](http://localhost:5050)
+  - **Email:** `admin@example.com`
+  - **Password:** `admin`
 
 ---
+<br>
 
 ## <a id="contacto"></a>📞 Contacto
 
 - **Autor:** Gustavo Castro
-- **Template Version:** 1.0.0
+- **Aplicación Version:** 1.0.0
 - **Spring Boot Version:** 3.4.1
 - **Java Version:** 21
-
-<br>
 
 ---
