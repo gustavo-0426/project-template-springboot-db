@@ -1,10 +1,10 @@
 services:
-  project:
+  TEMPLATE_SERVICE_NAME:
     build:
       context: ../
       dockerfile: docker-compose/Dockerfile
-    image: container-image:latest
-    container_name: container-name
+    image: gustavo0426/TEMPLATE_REPO_NAME:latest
+    container_name: TEMPLATE_REPO_NAME
     restart: always
     environment:
       SERVER_PORT: ${SERVER_PORT}
@@ -14,9 +14,9 @@ services:
       DB_USERNAME: ${DATABASE_USERNAME}
       DB_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - "9999:${SERVER_PORT}"
+      - "${SERVER_PORT}:${SERVER_PORT}"
     networks:
-      - project_network
+      - TEMPLATE_PROJECT_NAME_network
     depends_on:
       - postgres-db
 
@@ -31,19 +31,19 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - project_network
+      - TEMPLATE_PROJECT_NAME_network
       - shared_pgadmin_network
     volumes:
-      - project_postgres_data:/var/lib/postgresql/data
+      - TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data:/var/lib/postgresql/data
 
 networks:
-  project_network:
-    name: project_network
+  TEMPLATE_PROJECT_NAME_network:
+    name: TEMPLATE_PROJECT_NAME_network
     driver: bridge
   shared_pgadmin_network:
     external: true
 
 volumes:
-  project_postgres_data:
-    name: project_postgres_data
+  TEMPLATE_PROJECT_NAME_postgres_data:
+    name: TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data
     driver: bridge

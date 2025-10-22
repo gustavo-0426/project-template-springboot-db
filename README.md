@@ -1,17 +1,17 @@
 <br>
 
-# 🚀 [APP_NAME]
+# 🚀 TEMPLATE_REPO_NAME
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.java.net/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Aplicación** para proyectos Spring Boot con conexión a base de datos. Estructura mínima lista para desarrollar tu aplicación.
+**Aplicación** para proyecto Spring Boot con conexión a base de datos TEMPLATE_MOTOR_DATABASE. Estructura mínima lista para desarrollar tu aplicación.
 
 ## 📝 Instrucciones para personalizar esta plantilla
 
-> **⚠️ IMPORTANTE:** Este es un README plantilla. Debes usar el script para reemplazar automaticamente todos los valores entre corchetes `[VALOR]` con la información específica de tu proyecto.
+> **⚠️ IMPORTANTE:** Debes usar el script para reemplazar automaticamente todos los valores configurados en el archivo `replacement-rules.json` con la información específica de tu proyecto.
 
 #### Windows (PowerShell):
 ```powershell
@@ -23,11 +23,6 @@
 chmod +x script-project.sh
 ./script-project.sh "mi-nuevo-proyecto"
 ```
-
-#### Archivos principales a modificar:
-- `README.md` - Este archivo
-- `docker-compose/compose.yml` - Configuración de contenedores
-- `pom.xml` - Configuración Maven
 
 **Después de personalizar, elimina esta sección de instrucciones.**
 
@@ -73,7 +68,7 @@ chmod +x script-project.sh
 
 #### Clonar repositorio de GitHub:
 ```bash
-git clone https://github.com/github-name/application-name.git mi-nuevo-proyecto
+git clone https://github.com/TEMPLATE_GITHUB_NAME/TEMPLATE_REPO_NAME.git mi-nuevo-proyecto
 ```
 
 #### Ingresar a carpeta del proyecto:
@@ -104,8 +99,6 @@ docker-compose -f docker-compose/compose.yml logs -f
 - **Aplicación:** http://localhost:9999/v1/template
 - **Swagger UI:** http://localhost:9999/v1/template/swagger-ui/index.html
 - **PgAdmin Postgres:** http://localhost:8080
-  - **Email:** `gustavoprasca@hotmail.com`
-  - **Password:** `admin`
 
 ---
 <br>
@@ -130,9 +123,7 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
 
 Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
 
-- **pgAdmin:** [http://localhost:5050](http://localhost:5050)
-  - **Email:** `admin@example.com`
-  - **Password:** `admin`
+- **pgAdmin:** [http://localhost:8080](http://localhost:8080)
 
 ---
 <br>
