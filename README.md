@@ -15,13 +15,13 @@
 
 #### Windows (PowerShell):
 ```powershell
-.\script-project.ps1 "mi-nuevo-proyecto"
+.\script-project.ps1
 ```
 
 #### Linux/Mac (Bash):
 ```bash
 chmod +x script-project.sh
-./script-project.sh "mi-nuevo-proyecto"
+./script-project.sh
 ```
 
 **Después de personalizar, elimina esta sección de instrucciones.**

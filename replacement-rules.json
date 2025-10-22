@@ -9,7 +9,6 @@
   "files": [
     "pom.xml",
     "README.md",
-    "docker-compose/compose.yml",
-    "src/main/resources/application.yml"
+    "docker-compose/compose.yml"
   ]
 }
