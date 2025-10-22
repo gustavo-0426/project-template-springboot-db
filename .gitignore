@@ -2,6 +2,9 @@ HELP.md
 !**/src/main/**
 !**/src/test/**
 
+## Data sensitive files ##
+*.env
+
 ### STS ###
 .apt_generated
 .classpath

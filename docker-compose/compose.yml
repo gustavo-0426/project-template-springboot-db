@@ -46,3 +46,4 @@ networks:
 volumes:
   project_postgres_data:
     name: project_postgres_data
+    driver: bridge
