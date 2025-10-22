@@ -1,0 +1,14 @@
+{
+  "replacements": {
+    "application-name": "project-template-springboot-db",
+    "container-name": "project-template-springboot",
+    "container-image": "gustavo0426/application-name",
+    "github-name": "gustavo-0426"
+  },
+  "files": [
+    "README.md",
+    "docker-compose/compose.yml",
+    "pom.xml",
+    "src/main/resources/application.yml"
+  ]
+}
