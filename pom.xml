@@ -8,9 +8,9 @@
 		<version>3.4.1</version>
 	</parent>
 	<groupId>com.co.softworld</groupId>
-	<artifactId>template-spring-boot</artifactId>
+	<artifactId>application-name</artifactId>
 	<version>1.0.0</version>
-	<name>template-spring-boot</name>
+	<name>application-name</name>
 	<description>This is a template for spring boot project</description>
 
 	<properties>

@@ -3,8 +3,8 @@ services:
     build:
       context: ../
       dockerfile: docker-compose/Dockerfile
-    image: gustavo0426/template-spring-boot:latest
-    container_name: template-spring-boot
+    image: container-image:latest
+    container_name: container-name
     restart: always
     environment:
       SERVER_PORT: ${SERVER_PORT}

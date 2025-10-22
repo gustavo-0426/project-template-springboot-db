@@ -11,11 +11,23 @@
 
 ## 📝 Instrucciones para personalizar esta plantilla
 
-> **⚠️ IMPORTANTE:** Este es un README plantilla. Debes reemplazar todos los valores entre corchetes `[VALOR]` con la información específica de tu proyecto.
+> **⚠️ IMPORTANTE:** Este es un README plantilla. Debes usar el script para reemplazar automaticamente todos los valores entre corchetes `[VALOR]` con la información específica de tu proyecto.
 
-### Variables esenciales a reemplazar (Manual):
+#### Windows (PowerShell):
+```powershell
+.\script-project.ps1 "mi-nuevo-proyecto"
+```
 
-- `[APP_NAME]` → Nombre de la aplicación (nombre del repositorio, ejemplos: "template-spring-boot", "rental-inventory-api-mysql", "test-product-microservice-postgres")
+#### Linux/Mac (Bash):
+```bash
+chmod +x script-project.sh
+./script-project.sh "mi-nuevo-proyecto"
+```
+
+#### Archivos principales a modificar:
+- `README.md` - Este archivo
+- `docker-compose/compose.yml` - Configuración de contenedores
+- `pom.xml` - Configuración Maven
 
 **Después de personalizar, elimina esta sección de instrucciones.**
 
@@ -61,7 +73,7 @@
 
 #### Clonar repositorio de GitHub:
 ```bash
-git clone https://github.com/gustavo-0426/[APP_NAME].git mi-nuevo-proyecto
+git clone https://github.com/github-name/application-name.git mi-nuevo-proyecto
 ```
 
 #### Ingresar a carpeta del proyecto:
