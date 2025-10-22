@@ -76,7 +76,9 @@ networks:
   # ... (configuración existente)
 
 volumes:
-  project_mysql_data:
+  project_postgres_data:
+    name: project_postgres_data
+    driver: bridge
 ```
 
 ---
@@ -144,6 +146,8 @@ networks:
 
 volumes:
   project_mysql_data:
+    name: project_mysql_data
+    driver: bridge  
 ```
 
 ---
@@ -210,6 +214,8 @@ networks:
 
 volumes:
   project_sqlserver_data:
+    name: project_sqlserver_data
+    driver: bridge  
 ```
 
 ---
@@ -275,6 +281,8 @@ networks:
 
 volumes:
   project_mongo_data:
+    name: project_mongo_data
+    driver: bridge  
 ```
 
 **⚠️ Nota MongoDB:** Requiere cambios en el código para usar `@Document` en lugar de `@Entity`.
@@ -333,8 +341,17 @@ spring:
 4. **Actualizar compose.yml** - Cambiar servicio de BD
 5. **Reconstruir proyecto:**
    ```bash
+   # Detener los servicios de la aplicación
    docker-compose -f docker-compose/compose.yml down
+   ```
+
+   ```bash
+   # Construir las imagenes desde cero, sin ningun caché
    docker-compose -f docker-compose/compose.yml build --no-cache
+   ```
+
+   ```bash
+   # Arrancar los servicios de la aplicación
    docker-compose -f docker-compose/compose.yml up -d
    ```
 
