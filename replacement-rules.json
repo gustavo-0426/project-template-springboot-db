@@ -4,7 +4,9 @@
     "TEMPLATE_PROJECT_NAME": "project",
     "TEMPLATE_SERVICE_NAME": "template",
     "TEMPLATE_MOTOR_DATABASE": "postgres",
-    "TEMPLATE_GITHUB_NAME": "gustavo-0426"
+    "TEMPLATE_GITHUB_NAME": "gustavo-0426",
+    "TEMPLATE_PGADMIN_PORT": "${PGADMIN_PORT}",
+    "TEMPLATE_SERVER_PORT": "${SERVER_PORT}"
   },
   "files": [
     "pom.xml",

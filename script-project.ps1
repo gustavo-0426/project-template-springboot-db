@@ -25,11 +25,44 @@ try {
     exit 1
 }
 
+# Leer variables de entorno del archivo .env si existe
+$envVariables = @{}
+$envFile = "docker-compose\.env"
+if (Test-Path $envFile) {
+    Write-Host "Cargando variables de entorno desde $envFile..." -ForegroundColor Cyan
+    Get-Content $envFile | ForEach-Object {
+        if ($_ -match '^([^#][^=]+)=(.*)$') {
+            $envVariables[$matches[1]] = $matches[2]
+            Write-Host "   $($matches[1])=$($matches[2])" -ForegroundColor White
+        }
+    }
+}
+
+# Funcion para resolver variables de entorno en valores
+function Resolve-EnvVariables {
+    param([string]$value)
+    
+    # Buscar patrones ${VARIABLE_NAME} y reemplazarlos
+    while ($value -match '\$\{([^}]+)\}') {
+        $varName = $matches[1]
+        $varValue = $envVariables[$varName]
+        if ($varValue) {
+            $value = $value -replace [regex]::Escape($matches[0]), $varValue
+            Write-Host "   Resolviendo ${varName} -> $varValue" -ForegroundColor Yellow
+        } else {
+            Write-Host "   Variable de entorno no encontrada: $varName" -ForegroundColor Red
+            break
+        }
+    }
+    return $value
+}
+
 # Mostrar configuracion que se aplicara
 Write-Host ""
 Write-Host "Reemplazos que se aplicaran:" -ForegroundColor Yellow
 $config.replacements.PSObject.Properties | ForEach-Object {
-    Write-Host "   '$($_.Name)' -> '$($_.Value)'" -ForegroundColor White
+    $resolvedValue = Resolve-EnvVariables -value $_.Value
+    Write-Host "   '$($_.Name)' -> '$resolvedValue'" -ForegroundColor White
 }
 
 # Procesar cada archivo segun las reglas
@@ -44,7 +77,7 @@ foreach ($file in $config.files) {
         
         foreach ($replacement in $config.replacements.PSObject.Properties) {
             $searchText = $replacement.Name
-            $replaceText = $replacement.Value
+            $replaceText = Resolve-EnvVariables -value $replacement.Value
             
             if ($searchText -ne $replaceText) {
                 $beforeContent = Get-Content $file -Raw
@@ -60,6 +93,25 @@ foreach ($file in $config.files) {
         $filesProcessed++
     } else {
         Write-Host "Archivo no encontrado: $file" -ForegroundColor Yellow
+    }
+}
+
+# Eliminar seccion de instrucciones del README
+if (Test-Path "README.md") {
+    Write-Host ""
+    Write-Host "Eliminando seccion de instrucciones del README..." -ForegroundColor Cyan
+    
+    $readmeContent = Get-Content "README.md" -Raw
+    
+    # Patron para eliminar desde "## 📝 Instrucciones" hasta "---<br>"
+    $pattern = '(?s)## 📝 Instrucciones para personalizar esta plantilla.*?---\s*<br>\s*'
+    $cleanedContent = $readmeContent -replace $pattern, ''
+    
+    if ($readmeContent -ne $cleanedContent) {
+        Set-Content "README.md" -Value $cleanedContent -NoNewline
+        Write-Host "Seccion de instrucciones eliminada del README" -ForegroundColor Green
+    } else {
+        Write-Host "No se encontro la seccion de instrucciones para eliminar" -ForegroundColor Yellow
     }
 }
 

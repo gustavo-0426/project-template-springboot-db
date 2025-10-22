@@ -24,7 +24,7 @@ chmod +x script-project.sh
 ./script-project.sh
 ```
 
-**Después de personalizar, elimina esta sección de instrucciones.**
+**Después de ejecutar el script, esta sesión será eliminada automaticamente.**
 
 ---
 <br>
@@ -96,8 +96,8 @@ docker-compose -f docker-compose/compose.yml logs -f
 ### 3️⃣ Verificar funcionamiento
 
 #### Acceder a los endpoints:
-- **Aplicación:** http://localhost:9999/v1/template
-- **Swagger UI:** http://localhost:9999/v1/template/swagger-ui/index.html
+- **Aplicación:** http://localhost:TEMPLATE_SERVER_PORT/v1/template
+- **Swagger UI:** http://localhost:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html
 - **PgAdmin Postgres:** http://localhost:8080
 
 ---
@@ -116,8 +116,8 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
 
-- **Swagger UI:** [http://localhost:9999/v1/template/swagger-ui/index.html](http://localhost:9999/v1/template/swagger-ui/index.html)
-- **OpenAPI JSON:** [http://localhost:9999/v3/api-docs](http://localhost:9999/v3/api-docs)
+- **Swagger UI:** [http://localhost:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html](http://localhost:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://localhost:TEMPLATE_SERVER_PORT/v3/api-docs](http://localhost:TEMPLATE_SERVER_PORT/v3/api-docs)
 
 ### 🗄️ Administración de Base de Datos
 
