@@ -43,7 +43,7 @@ chmod +x script-project.sh
 
 ## <a id="características"></a>🚀 Características
 
-- ✅ **Aplicación** Spring Boot 3.4.1 + Java 21
+- ✅ **Aplicación** Spring Boot TEMPLATE_SPRING_BOOT_VERSION + Java TEMPLATE_JAVA_VERSION
 - 💾 **Soporte base de datos** PostgreSQL
 - 🐳 **Docker Compose** configurado para orquestación de servicios
 - 🔧 **Variables de entorno** para configuración sensible y mantenible
@@ -131,8 +131,8 @@ Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al se
 ## <a id="contacto"></a>📞 Contacto
 
 - **Autor:** Gustavo Castro
-- **Aplicación Version:** 1.0.0
-- **Spring Boot Version:** 3.4.1
-- **Java Version:** 21
+- **Aplicación Version:** TEMPLATE_PROJECT_VERSION
+- **Spring Boot Version:** TEMPLATE_SPRING_BOOT_VERSION
+- **Java Version:** TEMPLATE_JAVA_VERSION
 
 ---

@@ -38,19 +38,54 @@ if (Test-Path $envFile) {
     }
 }
 
-# Funcion para resolver variables de entorno en valores
+# Leer versiones del pom.xml si existe
+$pomVariables = @{}
+$pomFile = "pom.xml"
+if (Test-Path $pomFile) {
+    Write-Host "Extrayendo versiones desde $pomFile..." -ForegroundColor Cyan
+    $pomContent = Get-Content $pomFile -Raw
+    
+    # Extraer version de Spring Boot
+    if ($pomContent -match '<artifactId>spring-boot-starter-parent</artifactId>\s*<version>([^<]+)</version>') {
+        $pomVariables['SPRING_BOOT_VERSION'] = $matches[1]
+        Write-Host "   SPRING_BOOT_VERSION=$($matches[1])" -ForegroundColor White
+    }
+    
+    # Extraer version de Java
+    if ($pomContent -match '<java\.version>([^<]+)</java\.version>') {
+        $pomVariables['JAVA_VERSION'] = $matches[1]
+        Write-Host "   JAVA_VERSION=$($matches[1])" -ForegroundColor White
+    }
+    
+    # Extraer version del proyecto
+    if ($pomContent -match '<version>([^<]+)</version>' -and $pomContent -match '<groupId>[^<]+</groupId>\s*<artifactId>[^<]+</artifactId>\s*<version>([^<]+)</version>') {
+        $pomVariables['PROJECT_VERSION'] = $matches[1]
+        Write-Host "   PROJECT_VERSION=$($matches[1])" -ForegroundColor White
+    }
+}
+
+# Funcion para resolver variables de entorno y pom.xml en valores
 function Resolve-EnvVariables {
     param([string]$value)
     
     # Buscar patrones ${VARIABLE_NAME} y reemplazarlos
     while ($value -match '\$\{([^}]+)\}') {
         $varName = $matches[1]
-        $varValue = $envVariables[$varName]
+        $varValue = $null
+        
+        # Buscar primero en variables del pom.xml, luego en .env
+        if ($pomVariables.ContainsKey($varName)) {
+            $varValue = $pomVariables[$varName]
+            Write-Host "   Resolviendo ${varName} -> $varValue (desde pom.xml)" -ForegroundColor Yellow
+        } elseif ($envVariables.ContainsKey($varName)) {
+            $varValue = $envVariables[$varName]
+            Write-Host "   Resolviendo ${varName} -> $varValue (desde .env)" -ForegroundColor Yellow
+        }
+        
         if ($varValue) {
             $value = $value -replace [regex]::Escape($matches[0]), $varValue
-            Write-Host "   Resolviendo ${varName} -> $varValue" -ForegroundColor Yellow
         } else {
-            Write-Host "   Variable de entorno no encontrada: $varName" -ForegroundColor Red
+            Write-Host "   Variable no encontrada: $varName" -ForegroundColor Red
             break
         }
     }
