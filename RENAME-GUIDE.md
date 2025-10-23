@@ -124,7 +124,7 @@ pom.xml: <name>tienda-online</name>
   "replacements": {
     "template-spring-boot": "inventario-api",
     "This is a template for spring boot project": "API para gestión de inventario empresarial",
-    "9999": "8090",
+    "8080": "8080",
     "PROJECT-TEMPLATE-SPRINGBOOT": "inventario-api"
   },
   "files": [

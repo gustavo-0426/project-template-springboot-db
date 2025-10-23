@@ -11,7 +11,7 @@
 
 ## 📝 Instrucciones para personalizar esta plantilla
 
-> **⚠️ IMPORTANTE:** Debes usar el script para reemplazar automaticamente todos los valores configurados en el archivo `replacement-rules.json` con la información específica de tu proyecto.
+> **⚠️ IMPORTANTE:** Antes de realizar cualquier configuración o prueba, debes usar el script para reemplazar automáticamente todos los valores configurados en el archivo `replacement-rules.json` con la información específica de tu proyecto.
 
 #### Windows (PowerShell):
 ```powershell
@@ -24,7 +24,7 @@ chmod +x script-project.sh
 ./script-project.sh
 ```
 
-**Después de ejecutar el script, esta sesión será eliminada automaticamente.**
+**Después de ejecutar el script, esta sección será eliminada automáticamente.**
 
 ---
 <br>
@@ -54,7 +54,8 @@ chmod +x script-project.sh
 
 ## <a id="requisitos-previos"></a>📋 Requisitos Previos
 
-- **TEMPLATE_SPRING_BOOT_VERSION** o superior
+- **Spring Boot TEMPLATE_SPRING_BOOT_VERSION**
+- **Java TEMPLATE_JAVA_VERSION**
 - **Maven 3.8+**
 - **Docker** y **Docker Compose**
 - **Git**
@@ -123,7 +124,7 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
 
 Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
 
-- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:8080](http://TEMPLATE_SERVER_HOST:8080)
+- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT](http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT)
 
 ---
 <br>
@@ -131,8 +132,5 @@ Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al se
 ## <a id="contacto"></a>📞 Contacto
 
 - **Autor:** Gustavo Castro
-- **Aplicación Version:** TEMPLATE_PROJECT_VERSION
-- **Spring Boot Version:** TEMPLATE_SPRING_BOOT_VERSION
-- **Java Version:** TEMPLATE_JAVA_VERSION
 
 ---
