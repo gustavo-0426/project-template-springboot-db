@@ -2,6 +2,25 @@
 
 Este template soporta múltiples bases de datos. A continuación se detalla la configuración para cada una:
 
+## ⚙️ Configuración de Variables de Entorno
+
+> **📝 IMPORTANTE:** Antes de usar cualquier base de datos, debes configurar las variables de entorno en el archivo `docker-compose\.env` con TUS valores específicos.
+
+### 💡 Recomendaciones de Seguridad:
+- ✅ **Usa contraseñas fuertes** (mínimo 12 caracteres)
+- ✅ **Combina mayúsculas, minúsculas, números y símbolos**
+- ✅ **Nunca uses contraseñas por defecto** en producción
+- ✅ **Cambia los puertos** si es necesario para evitar conflictos
+
+### 📋 Ejemplo de configuración segura:
+```bash
+DATABASE_HOST=mi-postgres-db
+DATABASE_PORT=5432
+DATABASE_NAME=mi_aplicacion
+DATABASE_USERNAME=app_user
+DATABASE_PASSWORD=MiContraseñaSegura123!@#
+```
+
 ## Bases de Datos Soportadas
 
 | Base de Datos | Puerto por Defecto | Dependencia Maven |
@@ -17,12 +36,13 @@ Este template soporta múltiples bases de datos. A continuación se detalla la c
 ## 🐘 PostgreSQL (Configuración Actual)
 
 **1️⃣ Variables de Entorno (docker-compose\.env):**
+> **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=postgres-db
-DATABASE_PORT=5432
-DATABASE_NAME=postgres-database-name
-DATABASE_USERNAME=postgres_user
-DATABASE_PASSWORD=postgres_password
+DATABASE_HOST=        # Nombre del service de PostgreSQL en docker-compose (ej: postgres-db)
+DATABASE_PORT=        # Puerto de PostgreSQL (por defecto: 5432)
+DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DATABASE_USERNAME=    # Usuario de PostgreSQL (ej: mi_usuario)
+DATABASE_PASSWORD=    # Contraseña segura para PostgreSQL
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -86,12 +106,13 @@ volumes:
 ## 🐬 MySQL
 
 **1️⃣ Variables de Entorno (docker-compose\.env):**
+> **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=mysql-db
-DATABASE_PORT=3306
-DATABASE_NAME=mysql-database-name
-DATABASE_USERNAME=mysql_user
-DATABASE_PASSWORD=mysql_password
+DATABASE_HOST=        # Nombre del service de MySQL en docker-compose (ej: mysql-db)
+DATABASE_PORT=        # Puerto de MySQL (por defecto: 3306)
+DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DATABASE_USERNAME=    # Usuario de MySQL (ej: mi_usuario)
+DATABASE_PASSWORD=    # Contraseña segura para MySQL
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -155,12 +176,13 @@ volumes:
 ## 🏢 SQL Server
 
 **1️⃣ Variables de Entorno (docker-compose\.env):**
+> **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=sqlserver-db
-DATABASE_PORT=1433
-DATABASE_NAME=sqlserver-database-name
-DATABASE_USERNAME=sqlserver_user
-DATABASE_PASSWORD=sqlserver_password
+DATABASE_HOST=        # Nombre del service de SQL Server en docker-compose (ej: sqlserver-db)
+DATABASE_PORT=        # Puerto de SQL Server (por defecto: 1433)
+DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DATABASE_USERNAME=    # Usuario de SQL Server (ej: mi_usuario)
+DATABASE_PASSWORD=    # Contraseña segura para SQL Server (mín. 8 caracteres, mayús/minús/números/símbolos)
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -223,12 +245,13 @@ volumes:
 ## 🍃 MongoDB
 
 **1️⃣ Variables de Entorno (docker-compose\.env):**
+> **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=mongo-db
-DATABASE_PORT=27017
-DATABASE_NAME=mongo-database-name
-DATABASE_USERNAME=mongo_user
-DATABASE_PASSWORD=mongo_password
+DATABASE_HOST=        # Nombre del service de MongoDB en docker-compose (ej: mongo-db)
+DATABASE_PORT=        # Puerto de MongoDB (por defecto: 27017)
+DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DATABASE_USERNAME=    # Usuario de MongoDB (ej: mi_usuario)
+DATABASE_PASSWORD=    # Contraseña segura para MongoDB
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -292,10 +315,11 @@ volumes:
 ## 🧪 H2 (Base de Datos en Memoria - Desarrollo/Testing)
 
 **1️⃣ Variables de Entorno (docker-compose\.env):**
+> **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_NAME=h2-database-name
-DATABASE_USERNAME=h2_user
-DATABASE_PASSWORD=h2_password
+DATABASE_NAME=        # Nombre de tu base de datos en memoria (ej: mi_aplicacion_db)
+DATABASE_USERNAME=    # Usuario para H2 (ej: mi_usuario)
+DATABASE_PASSWORD=    # Contraseña para H2 (opcional, puede estar vacía)
 ```
 
 **2️⃣ Dependencia Maven:**
