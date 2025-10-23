@@ -123,7 +123,7 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
 
 Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
 
-- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:8080](http://TEMPLATE_SERVER_HOST:8080)
+- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT](http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT)
 
 ---
 <br>
