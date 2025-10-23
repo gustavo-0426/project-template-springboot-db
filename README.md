@@ -44,7 +44,7 @@ chmod +x script-project.sh
 ## <a id="características"></a>🚀 Características
 
 - ✅ **Aplicación** Spring Boot TEMPLATE_SPRING_BOOT_VERSION + Java TEMPLATE_JAVA_VERSION
-- 💾 **Soporte base de datos** PostgreSQL
+- 💾 **Soporte base de datos** TEMPLATE_MOTOR_DATABASE
 - 🐳 **Docker Compose** configurado para orquestación de servicios
 - 🔧 **Variables de entorno** para configuración sensible y mantenible
 - 📦 **Dockerfile** optimizado con multi-stage build
@@ -54,7 +54,7 @@ chmod +x script-project.sh
 
 ## <a id="requisitos-previos"></a>📋 Requisitos Previos
 
-- **Java 21** o superior
+- **TEMPLATE_SPRING_BOOT_VERSION** o superior
 - **Maven 3.8+**
 - **Docker** y **Docker Compose**
 - **Git**
@@ -96,9 +96,9 @@ docker-compose -f docker-compose/compose.yml logs -f
 ### 3️⃣ Verificar funcionamiento
 
 #### Acceder a los endpoints:
-- **Aplicación:** http://localhost:TEMPLATE_SERVER_PORT/v1/template
-- **Swagger UI:** http://localhost:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html
-- **PgAdmin Postgres:** http://localhost:8080
+- **Aplicación:** http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template
+- **Swagger UI:** http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html
+- **PgAdmin Postgres:** http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT
 
 ---
 <br>
@@ -116,14 +116,14 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
 
-- **Swagger UI:** [http://localhost:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html](http://localhost:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html)
-- **OpenAPI JSON:** [http://localhost:TEMPLATE_SERVER_PORT/v3/api-docs](http://localhost:TEMPLATE_SERVER_PORT/v3/api-docs)
+- **Swagger UI:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html](http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v3/api-docs](http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v3/api-docs)
 
 ### 🗄️ Administración de Base de Datos
 
 Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
 
-- **pgAdmin:** [http://localhost:8080](http://localhost:8080)
+- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:8080](http://TEMPLATE_SERVER_HOST:8080)
 
 ---
 <br>
