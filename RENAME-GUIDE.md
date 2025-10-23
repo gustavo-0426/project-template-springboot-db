@@ -15,17 +15,15 @@ Este script facilita la configuración del proyecto usando **UN SOLO archivo JSO
 ```json
 {
   "replacements": {
-    "template-spring-boot": "mi-nueva-app",
-    "gustavo0426/template-spring-boot": "mi-usuario/mi-nueva-app",
-    "This is a template for spring boot project": "Mi increíble aplicación",
-    "gustavo-0426": "mi-usuario",
-    "9999": "8080"
+    "TEMPLATE_REPO_NAME": "project-service-api-db",
+    "TEMPLATE_PROJECT_NAME": "project",
+    "TEMPLATE_SERVICE_NAME": "service",
+    "TEMPLATE_MOTOR_DATABASE": "PostgreSQL"
   },
   "files": [
-    "README.md",
-    "docker-compose/compose.yml",
     "pom.xml",
-    "src/main/resources/application.yml"
+    "README.md",
+    "docker-compose/compose.yml"
   ]
 }
 ```
@@ -52,15 +50,13 @@ Este script facilita la configuración del proyecto usando **UN SOLO archivo JSO
 ```
 README.md: # template-spring-boot
 pom.xml: <name>template-spring-boot</name>
-docker-compose: image: gustavo0426/template-spring-boot:latest
 ```
 
 ### 2. **Tu configuración JSON:**
 ```json
 {
   "replacements": {
-    "template-spring-boot": "tienda-online",
-    "gustavo0426/template-spring-boot": "juan/tienda-online"
+    "template-spring-boot": "tienda-online"
   },
   "files": ["README.md", "pom.xml", "docker-compose/compose.yml"]
 }
@@ -70,7 +66,6 @@ docker-compose: image: gustavo0426/template-spring-boot:latest
 ```
 README.md: # tienda-online
 pom.xml: <name>tienda-online</name>
-docker-compose: image: juan/tienda-online:latest
 ```
 
 ## 🎛️ Personalización
@@ -128,9 +123,7 @@ docker-compose: image: juan/tienda-online:latest
 {
   "replacements": {
     "template-spring-boot": "inventario-api",
-    "gustavo0426/template-spring-boot": "empresa/inventario-api", 
     "This is a template for spring boot project": "API para gestión de inventario empresarial",
-    "gustavo-0426": "empresa",
     "9999": "8090",
     "PROJECT-TEMPLATE-SPRINGBOOT": "inventario-api"
   },

@@ -1,14 +1,20 @@
 {
   "replacements": {
-    "application-name": "project-template-springboot-db",
-    "container-name": "project-template-springboot",
-    "container-image": "gustavo0426/application-name",
-    "github-name": "gustavo-0426"
+    "TEMPLATE_REPO_NAME": "project-template-springboot-db",
+    "TEMPLATE_PROJECT_NAME": "project",
+    "TEMPLATE_SERVICE_NAME": "template",
+    "TEMPLATE_MOTOR_DATABASE": "PostgreSQL",
+    "TEMPLATE_GITHUB_NAME": "gustavo-0426",
+    "TEMPLATE_PGADMIN_PORT": "${PGADMIN_PORT}",
+    "TEMPLATE_SERVER_HOST": "${SERVER_HOST}",
+    "TEMPLATE_SERVER_PORT": "${SERVER_PORT}",
+    "TEMPLATE_SPRING_BOOT_VERSION": "${SPRING_BOOT_VERSION}",
+    "TEMPLATE_JAVA_VERSION": "${JAVA_VERSION}",
+    "TEMPLATE_PROJECT_VERSION": "${PROJECT_VERSION}"
   },
   "files": [
-    "README.md",
-    "docker-compose/compose.yml",
     "pom.xml",
-    "src/main/resources/application.yml"
+    "README.md",
+    "docker-compose/compose.yml"
   ]
 }

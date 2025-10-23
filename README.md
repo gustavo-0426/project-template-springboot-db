@@ -1,35 +1,30 @@
 <br>
 
-# 🚀 [APP_NAME]
+# 🚀 TEMPLATE_REPO_NAME
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.java.net/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Aplicación** para proyectos Spring Boot con conexión a base de datos. Estructura mínima lista para desarrollar tu aplicación.
+**Aplicación** para proyecto Spring Boot con conexión a base de datos TEMPLATE_MOTOR_DATABASE. Estructura mínima lista para desarrollar tu aplicación.
 
 ## 📝 Instrucciones para personalizar esta plantilla
 
-> **⚠️ IMPORTANTE:** Este es un README plantilla. Debes usar el script para reemplazar automaticamente todos los valores entre corchetes `[VALOR]` con la información específica de tu proyecto.
+> **⚠️ IMPORTANTE:** Debes usar el script para reemplazar automaticamente todos los valores configurados en el archivo `replacement-rules.json` con la información específica de tu proyecto.
 
 #### Windows (PowerShell):
 ```powershell
-.\script-project.ps1 "mi-nuevo-proyecto"
+.\script-project.ps1
 ```
 
 #### Linux/Mac (Bash):
 ```bash
 chmod +x script-project.sh
-./script-project.sh "mi-nuevo-proyecto"
+./script-project.sh
 ```
 
-#### Archivos principales a modificar:
-- `README.md` - Este archivo
-- `docker-compose/compose.yml` - Configuración de contenedores
-- `pom.xml` - Configuración Maven
-
-**Después de personalizar, elimina esta sección de instrucciones.**
+**Después de ejecutar el script, esta sesión será eliminada automaticamente.**
 
 ---
 <br>
@@ -48,8 +43,8 @@ chmod +x script-project.sh
 
 ## <a id="características"></a>🚀 Características
 
-- ✅ **Aplicación** Spring Boot 3.4.1 + Java 21
-- 💾 **Soporte base de datos** PostgreSQL
+- ✅ **Aplicación** Spring Boot TEMPLATE_SPRING_BOOT_VERSION + Java TEMPLATE_JAVA_VERSION
+- 💾 **Soporte base de datos** TEMPLATE_MOTOR_DATABASE
 - 🐳 **Docker Compose** configurado para orquestación de servicios
 - 🔧 **Variables de entorno** para configuración sensible y mantenible
 - 📦 **Dockerfile** optimizado con multi-stage build
@@ -59,7 +54,7 @@ chmod +x script-project.sh
 
 ## <a id="requisitos-previos"></a>📋 Requisitos Previos
 
-- **Java 21** o superior
+- **TEMPLATE_SPRING_BOOT_VERSION** o superior
 - **Maven 3.8+**
 - **Docker** y **Docker Compose**
 - **Git**
@@ -73,7 +68,7 @@ chmod +x script-project.sh
 
 #### Clonar repositorio de GitHub:
 ```bash
-git clone https://github.com/github-name/application-name.git mi-nuevo-proyecto
+git clone https://github.com/TEMPLATE_GITHUB_NAME/TEMPLATE_REPO_NAME.git mi-nuevo-proyecto
 ```
 
 #### Ingresar a carpeta del proyecto:
@@ -101,11 +96,9 @@ docker-compose -f docker-compose/compose.yml logs -f
 ### 3️⃣ Verificar funcionamiento
 
 #### Acceder a los endpoints:
-- **Aplicación:** http://localhost:9999/v1/template
-- **Swagger UI:** http://localhost:9999/v1/template/swagger-ui/index.html
-- **PgAdmin Postgres:** http://localhost:8080
-  - **Email:** `gustavoprasca@hotmail.com`
-  - **Password:** `admin`
+- **Aplicación:** http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template
+- **Swagger UI:** http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html
+- **PgAdmin Postgres:** http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT
 
 ---
 <br>
@@ -123,16 +116,14 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
 
-- **Swagger UI:** [http://localhost:9999/v1/template/swagger-ui/index.html](http://localhost:9999/v1/template/swagger-ui/index.html)
-- **OpenAPI JSON:** [http://localhost:9999/v3/api-docs](http://localhost:9999/v3/api-docs)
+- **Swagger UI:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html](http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v3/api-docs](http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v3/api-docs)
 
 ### 🗄️ Administración de Base de Datos
 
 Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
 
-- **pgAdmin:** [http://localhost:5050](http://localhost:5050)
-  - **Email:** `admin@example.com`
-  - **Password:** `admin`
+- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:8080](http://TEMPLATE_SERVER_HOST:8080)
 
 ---
 <br>
@@ -140,8 +131,8 @@ Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al se
 ## <a id="contacto"></a>📞 Contacto
 
 - **Autor:** Gustavo Castro
-- **Aplicación Version:** 1.0.0
-- **Spring Boot Version:** 3.4.1
-- **Java Version:** 21
+- **Aplicación Version:** TEMPLATE_PROJECT_VERSION
+- **Spring Boot Version:** TEMPLATE_SPRING_BOOT_VERSION
+- **Java Version:** TEMPLATE_JAVA_VERSION
 
 ---
