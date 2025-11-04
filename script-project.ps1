@@ -25,17 +25,50 @@ try {
     exit 1
 }
 
-# Leer variables de entorno del archivo .env si existe
-$envVariables = @{}
-$envFile = "docker-compose\.env"
-if (Test-Path $envFile) {
-    Write-Host "Cargando variables de entorno desde $envFile..." -ForegroundColor Cyan
-    Get-Content $envFile | ForEach-Object {
-        if ($_ -match '^([^#][^=]+)=(.*)$') {
-            $envVariables[$matches[1]] = $matches[2]
-            Write-Host "   $($matches[1])=$($matches[2])" -ForegroundColor White
-        }
+# Obtener nombre del repositorio git y extraer variables
+$repoUrl = git remote get-url origin 2>$null
+if ($repoUrl) {
+    if ($repoUrl -match '/([^/]+?)(\.git)?$') {
+            $SCRIPT_REPO_NAME = $matches[1]
+            Write-Host "Repositorio detectado: $SCRIPT_REPO_NAME" -ForegroundColor Cyan
+
+            # Extraer usuario de GitHub del repositorio remoto
+            if ($repoUrl -match '[:/]([^/]+)/[^/]+\.git$') {
+                $SCRIPT_GITHUB_NAME = $matches[1]
+                Write-Host "SCRIPT_GITHUB_NAME detectado: $SCRIPT_GITHUB_NAME" -ForegroundColor Cyan
+            } else {
+                $SCRIPT_GITHUB_NAME = ''
+                Write-Host "No se pudo extraer SCRIPT_GITHUB_NAME del repositorio remoto" -ForegroundColor Yellow
+            }
+
+            # Separar por guiones
+            $repoParts = $SCRIPT_REPO_NAME -split '-'
+            # Validar estructura: [project]-[service]-[componente]-[db(optional)]
+            if ($repoParts.Length -ge 3) {
+                $SCRIPT_PROJECT_NAME = $repoParts[0]
+                $SCRIPT_SERVICE_NAME = $repoParts[1]
+                $SCRIPT_CONTAINER_NAME = ($repoParts[0..2] -join '-')
+                if ($repoParts.Length -ge 4) {
+                    $SCRIPT_IMAGE_NAME = ($repoParts[0..3] -join '-')
+                } else {
+                    $SCRIPT_IMAGE_NAME = $SCRIPT_CONTAINER_NAME
+                }
+                Write-Host "SCRIPT_PROJECT_NAME: $SCRIPT_PROJECT_NAME" -ForegroundColor Cyan
+                Write-Host "SCRIPT_SERVICE_NAME: $SCRIPT_SERVICE_NAME" -ForegroundColor Cyan
+                Write-Host "SCRIPT_CONTAINER_NAME: $SCRIPT_CONTAINER_NAME" -ForegroundColor Cyan
+                Write-Host "SCRIPT_IMAGE_NAME: $SCRIPT_IMAGE_NAME" -ForegroundColor Cyan
+            } else {
+                Write-Host "Error: El nombre del repositorio git ('$REPO_NAME') no cumple con la estructura esperada: [project]-[service]-[componente]-[db(optional)]" -ForegroundColor Red
+                Write-Host "Por favor, renombra el repositorio git para continuar." -ForegroundColor Yellow
+                exit 1
+            }
+    } else {
+        Write-Host "Error: No se pudo extraer el nombre del repositorio de la URL: $repoUrl" -ForegroundColor Red
+        exit 1
     }
+} else {
+    Write-Host "Error: No se encontró URL remota de git (¿es un repo git?)" -ForegroundColor Red
+    exit 1
 }
 
 # Leer versiones del pom.xml si existe
@@ -47,20 +80,20 @@ if (Test-Path $pomFile) {
     
     # Extraer version de Spring Boot
     if ($pomContent -match '<artifactId>spring-boot-starter-parent</artifactId>\s*<version>([^<]+)</version>') {
-        $pomVariables['SPRING_BOOT_VERSION'] = $matches[1]
-        Write-Host "   SPRING_BOOT_VERSION=$($matches[1])" -ForegroundColor White
+        $pomVariables['SCRIPT_SPRING_BOOT_VERSION'] = $matches[1]
+        Write-Host "   SCRIPT_SPRING_BOOT_VERSION=$($matches[1])" -ForegroundColor White
     }
     
     # Extraer version de Java
     if ($pomContent -match '<java\.version>([^<]+)</java\.version>') {
-        $pomVariables['JAVA_VERSION'] = $matches[1]
-        Write-Host "   JAVA_VERSION=$($matches[1])" -ForegroundColor White
+        $pomVariables['SCRIPT_JAVA_VERSION'] = $matches[1]
+        Write-Host "   SCRIPT_JAVA_VERSION=$($matches[1])" -ForegroundColor White
     }
     
     # Extraer version del proyecto
     if ($pomContent -match '<version>([^<]+)</version>' -and $pomContent -match '<groupId>[^<]+</groupId>\s*<artifactId>[^<]+</artifactId>\s*<version>([^<]+)</version>') {
-        $pomVariables['PROJECT_VERSION'] = $matches[1]
-        Write-Host "   PROJECT_VERSION=$($matches[1])" -ForegroundColor White
+        $pomVariables['SCRIPT_PROJECT_VERSION'] = $matches[1]
+        Write-Host "   SCRIPT_PROJECT_VERSION=$($matches[1])" -ForegroundColor White
     }
 }
 
@@ -72,16 +105,23 @@ function Resolve-EnvVariables {
     while ($value -match '\$\{([^}]+)\}') {
         $varName = $matches[1]
         $varValue = $null
-        
-        # Buscar primero en variables del pom.xml, luego en .env
-        if ($pomVariables.ContainsKey($varName)) {
-            $varValue = $pomVariables[$varName]
-            Write-Host "   Resolviendo ${varName} -> $varValue (desde pom.xml)" -ForegroundColor Yellow
-        } elseif ($envVariables.ContainsKey($varName)) {
-            $varValue = $envVariables[$varName]
-            Write-Host "   Resolviendo ${varName} -> $varValue (desde .env)" -ForegroundColor Yellow
+
+        # Buscar primero en variables definidas en el script
+        if (Get-Variable -Name $varName -Scope Script -ErrorAction SilentlyContinue) {
+            $varValue = (Get-Variable -Name $varName -Scope Script).Value
+            Write-Host "   Resolviendo ${varName} -> $varValue (desde variable definida en script)" -ForegroundColor Yellow
         }
-        
+        # Buscar en pom.xml y .env si no se resolvió
+        if (-not $varValue) {
+            if ($pomVariables.ContainsKey($varName)) {
+                $varValue = $pomVariables[$varName]
+                Write-Host "   Resolviendo ${varName} -> $varValue (desde pom.xml)" -ForegroundColor Yellow
+            } elseif ($envVariables.ContainsKey($varName)) {
+                $varValue = $envVariables[$varName]
+                Write-Host "   Resolviendo ${varName} -> $varValue (desde .env)" -ForegroundColor Yellow
+            }
+        }
+
         if ($varValue) {
             $value = $value -replace [regex]::Escape($matches[0]), $varValue
         } else {
