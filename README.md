@@ -18,7 +18,7 @@
 .\script-project.ps1
 ```
 
-**Después de ejecutar el script, esta sección será eliminada automáticamente.**
+**Después de ejecutar el script, esta sección será eliminada automáticamente, de igual forma se elimina el archivo de configuracion `replacement-rules.json` y `script-project.ps1`.**
 
 ---
 <br>
