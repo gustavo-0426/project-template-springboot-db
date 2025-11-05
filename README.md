@@ -18,7 +18,7 @@
 .\script-project.ps1
 ```
 
-**Después de ejecutar el script, esta sección será eliminada automáticamente.**
+**Después de ejecutar el script, esta sección será eliminada automáticamente, de igual forma se elimina el archivo de configuracion `replacement-rules.json` y `script-project.ps1`.**
 
 ---
 <br>
@@ -72,13 +72,7 @@ cd /ruta/project-template-springboot-db
 
 **Windows (PowerShell):**
 ```powershell
-$env:SERVER_PORT="9999"
-$env:DATABASE_HOST="postgres-db"
-$env:DATABASE_PORT="5432"
-$env:DATABASE_NAME="test"
-$env:DATABASE_USERNAME="sa"
-$env:DATABASE_PASSWORD="sa"
-docker-compose -f docker-compose/compose.yml up -d
+$env:SERVER_PORT="9999"; $env:DATABASE_HOST="postgres-db"; $env:DATABASE_PORT="5432"; $env:DATABASE_NAME="test"; $env:DATABASE_USERNAME="sa"; $env:DATABASE_PASSWORD="sa"; docker-compose -f docker-compose/compose.yml up -d
 ```
 
 **Linux/Mac/Git Bash:**
