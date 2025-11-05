@@ -125,8 +125,13 @@ Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al se
 ---
 <br>
 
-## <a id="contacto"></a>📞 Contacto
+## <a id="contacto"></a>📞 Contacto 
 
-- **Autor:** Gustavo Castro
+### Gustavo Castro
+
+**Ingeniero de Sistemas**  
+**Especialidad:** Backend Senior, DevOps, Arquitectura Cloud (AWS)   
+**GitHub:** [github.com/gustavo-0426](https://github.com/gustavo-0426)  
+**LinkedIn:** [linkedin.com/in/gustavo-castro](https://linkedin.com/in/gustavo-castro)
 
 ---
