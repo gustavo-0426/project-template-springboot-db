@@ -4,7 +4,7 @@ Este template soporta múltiples bases de datos. A continuación se detalla la c
 
 ## ⚙️ Configuración de Variables de Entorno
 
-> **📝 IMPORTANTE:** Antes de usar cualquier base de datos, debes configurar las variables de entorno en el archivo `docker-compose\.env` con TUS valores específicos.
+> **📝 IMPORTANTE:** Antes de usar cualquier base de datos, debes configurar las variables de entorno en el archivo `docker-compose\.env` con tus valores específicos.
 
 ### 💡 Recomendaciones de Seguridad:
 - ✅ **Usa contraseñas fuertes** (mínimo 12 caracteres)

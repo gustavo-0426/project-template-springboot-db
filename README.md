@@ -11,17 +11,11 @@
 
 ## 📝 Instrucciones para personalizar esta plantilla
 
-> **⚠️ IMPORTANTE:** Antes de realizar cualquier configuración o prueba, debes usar el script para reemplazar automáticamente todos los valores configurados en el archivo `replacement-rules.json` con la información específica de tu proyecto.
+> **⚠️ IMPORTANTE:** Antes de realizar cualquier configuración o prueba, debes usar el script para reemplazar automáticamente todos los valores configurados en el archivo `replacement-rules.json`.
 
 #### Windows (PowerShell):
 ```powershell
 .\script-project.ps1
-```
-
-#### Linux/Mac (Bash):
-```bash
-chmod +x script-project.sh
-./script-project.sh
 ```
 
 **Después de ejecutar el script, esta sección será eliminada automáticamente.**
@@ -65,23 +59,31 @@ chmod +x script-project.sh
 
 ## <a id="inicio-rapido"></a>⚡ Inicio Rápido (5 minutos)
 
-### 1️⃣ Clonar Repositorio
+### 1️⃣ Ingresar a la ruta del proyecto
 
-#### Clonar repositorio de GitHub:
+Abre una consola (Bash, Git Bash o PowerShell) y navega a la carpeta raíz de este repositorio:
 ```bash
-git clone https://github.com/TEMPLATE_GITHUB_NAME/TEMPLATE_REPO_NAME.git mi-nuevo-proyecto
-```
-
-#### Ingresar a carpeta del proyecto:
-```bash
-cd mi-nuevo-proyecto
+cd /ruta/project-template-springboot-db
 ```
 
 ### 2️⃣ Ejecutar Aplicación con Docker Compose
 
 #### Construir y ejecutar:
-```bash
+
+**Windows (PowerShell):**
+```powershell
+$env:SERVER_PORT="9999"
+$env:DATABASE_HOST="postgres-db"
+$env:DATABASE_PORT="5432"
+$env:DATABASE_NAME="test"
+$env:DATABASE_USERNAME="sa"
+$env:DATABASE_PASSWORD="sa"
 docker-compose -f docker-compose/compose.yml up -d
+```
+
+**Linux/Mac/Git Bash:**
+```bash
+SERVER_PORT=9999 DATABASE_HOST=postgres-db DATABASE_PORT=5432 DATABASE_NAME=test DATABASE_USERNAME=sa DATABASE_PASSWORD=sa docker-compose -f docker-compose/compose.yml up -d
 ```
 
 #### Verificar contenedores activos:

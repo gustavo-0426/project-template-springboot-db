@@ -3,8 +3,8 @@ services:
     build:
       context: ../
       dockerfile: docker-compose/Dockerfile
-    image: gustavo0426/TEMPLATE_REPO_NAME:latest
-    container_name: TEMPLATE_REPO_NAME
+    image: gustavo0426/TEMPLATE_IMAGE_NAME:latest
+    container_name: TEMPLATE_CONTAINER_NAME
     restart: always
     environment:
       SERVER_PORT: ${SERVER_PORT}
@@ -44,6 +44,5 @@ networks:
     external: true
 
 volumes:
-  TEMPLATE_PROJECT_NAME_postgres_data:
+  TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data:
     name: TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data
-    driver: bridge
