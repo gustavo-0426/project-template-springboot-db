@@ -197,7 +197,7 @@ Write-Host "Resumen:" -ForegroundColor Yellow
 Write-Host "   Archivos procesados: $filesProcessed" -ForegroundColor White
 Write-Host "   Reemplazos realizados: $replacementsMade" -ForegroundColor White
 
-Write-Host ""
-Write-Host "Proximos pasos:" -ForegroundColor Yellow
-Write-Host "   1. Revisar los archivos modificados" -ForegroundColor White
-Write-Host "   2. Ejecutar: docker-compose -f docker-compose/compose.yml up -d" -ForegroundColor White
+# Eliminar archivos de configuración y script
+Write-Host "Eliminando archivos replacement-rules.json y script-project.ps1..." -ForegroundColor Cyan
+Remove-Item -Path "replacement-rules.json" -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "script-project.ps1" -Force -ErrorAction SilentlyContinue
