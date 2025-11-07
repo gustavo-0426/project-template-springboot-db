@@ -29,7 +29,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     ports:
-      - "5432:5432"
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
     networks:
       - TEMPLATE_SERVICE_NAME_network
       - shared_pgadmin_network
