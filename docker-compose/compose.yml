@@ -22,7 +22,7 @@ services:
 
   TEMPLATE_SERVICE_NAME-db:
     image: postgres:16-alpine
-    container_name: TEMPLATE_SERVICE_NAME-db
+    container_name: db-TEMPLATE_SERVICE_NAME
     restart: always
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
