@@ -43,22 +43,20 @@ if ($repoUrl) {
 
             # Separar por guiones
             $repoParts = $SCRIPT_REPO_NAME -split '-'
-            # Validar estructura: [project]-[service]-[componente]-[db(optional)]
-            if ($repoParts.Length -ge 3) {
-                $SCRIPT_PROJECT_NAME = $repoParts[0]
+            # Validar estructura: [component]-[service]-[db(optional)]
+            if ($repoParts.Length -ge 2) {
                 $SCRIPT_SERVICE_NAME = $repoParts[1]
-                $SCRIPT_CONTAINER_NAME = ($repoParts[0..2] -join '-')
-                if ($repoParts.Length -ge 4) {
-                    $SCRIPT_IMAGE_NAME = ($repoParts[0..3] -join '-')
+                $SCRIPT_CONTAINER_NAME = ($repoParts[0..1] -join '-')
+                if ($repoParts.Length -ge 3) {
+                    $SCRIPT_IMAGE_NAME = ($repoParts[0..2] -join '-')
                 } else {
                     $SCRIPT_IMAGE_NAME = $SCRIPT_CONTAINER_NAME
                 }
-                Write-Host "SCRIPT_PROJECT_NAME: $SCRIPT_PROJECT_NAME" -ForegroundColor Cyan
                 Write-Host "SCRIPT_SERVICE_NAME: $SCRIPT_SERVICE_NAME" -ForegroundColor Cyan
                 Write-Host "SCRIPT_CONTAINER_NAME: $SCRIPT_CONTAINER_NAME" -ForegroundColor Cyan
                 Write-Host "SCRIPT_IMAGE_NAME: $SCRIPT_IMAGE_NAME" -ForegroundColor Cyan
             } else {
-                Write-Host "Error: El nombre del repositorio git ('$REPO_NAME') no cumple con la estructura esperada: [project]-[service]-[componente]-[db(optional)]" -ForegroundColor Red
+                Write-Host "Error: El nombre del repositorio git ('$SCRIPT_REPO_NAME') no cumple con la estructura esperada: [component]-[service]-[db(optional)]" -ForegroundColor Red
                 Write-Host "Por favor, renombra el repositorio git para continuar." -ForegroundColor Yellow
                 exit 1
             }
