@@ -16,13 +16,13 @@ services:
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     networks:
-      - TEMPLATE_PROJECT_NAME_network
+      - TEMPLATE_SERVICE_NAME_network
     depends_on:
-      - postgres-db
+      - TEMPLATE_SERVICE_NAME-db
 
-  postgres-db:
+  TEMPLATE_SERVICE_NAME-db:
     image: postgres:16-alpine
-    container_name: project-db
+    container_name: TEMPLATE_SERVICE_NAME-db
     restart: always
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
@@ -31,18 +31,18 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - TEMPLATE_PROJECT_NAME_network
+      - TEMPLATE_SERVICE_NAME_network
       - shared_pgadmin_network
     volumes:
-      - TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data:/var/lib/postgresql/data
+      - TEMPLATE_SERVICE_NAME_TEMPLATE_MOTOR_DATABASE_data:/var/lib/postgresql/data
 
 networks:
-  TEMPLATE_PROJECT_NAME_network:
-    name: TEMPLATE_PROJECT_NAME_network
+  TEMPLATE_SERVICE_NAME_network:
+    name: TEMPLATE_SERVICE_NAME_network
     driver: bridge
   shared_pgadmin_network:
     external: true
 
 volumes:
-  TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data:
-    name: TEMPLATE_PROJECT_NAME_TEMPLATE_MOTOR_DATABASE_data
+  TEMPLATE_SERVICE_NAME_TEMPLATE_MOTOR_DATABASE_data:
+    name: TEMPLATE_SERVICE_NAME_TEMPLATE_MOTOR_DATABASE_data
