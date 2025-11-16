@@ -72,12 +72,12 @@ cd /ruta/project-template-springboot-db
 
 **Windows (PowerShell):**
 ```powershell
-$env:SERVER_PORT="9999"; $env:DATABASE_HOST="postgres-db"; $env:DATABASE_PORT="5432"; $env:DATABASE_NAME="test"; $env:DATABASE_USERNAME="sa"; $env:DATABASE_PASSWORD="sa"; docker-compose -f docker-compose/compose.yml up -d
+$env:SERVER_PORT="9999"; $env:DB_HOST="postgres-db"; $env:DB_PORT="5432"; $env:DB_DATABASE="test"; $env:DB_USERNAME="sa"; $env:DB_PASSWORD="sa"; docker-compose -f docker-compose/compose.yml up -d
 ```
 
 **Linux/Mac/Git Bash:**
 ```bash
-SERVER_PORT=9999 DATABASE_HOST=postgres-db DATABASE_PORT=5432 DATABASE_NAME=test DATABASE_USERNAME=sa DATABASE_PASSWORD=sa docker-compose -f docker-compose/compose.yml up -d
+SERVER_PORT=9999 DB_HOST=postgres-db DB_PORT=5432 DB_DATABASE=test DB_USERNAME=sa DB_PASSWORD=sa docker-compose -f docker-compose/compose.yml up -d
 ```
 
 #### Verificar contenedores activos:
