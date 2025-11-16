@@ -59,25 +59,19 @@
 
 ## <a id="inicio-rapido"></a>⚡ Inicio Rápido (5 minutos)
 
-### 1️⃣ Ingresar a la ruta del proyecto
+### 1️⃣ Variables de Entorno
 
-Abre una consola (Bash, Git Bash o PowerShell) y navega a la carpeta raíz de este repositorio:
+Agregar variables de entorno del proyecto en la siguiente ruta:
 ```bash
-cd /ruta/project-template-springboot-db
+cd /docker-compose/.env
 ```
 
 ### 2️⃣ Ejecutar Aplicación con Docker Compose
 
 #### Construir y ejecutar:
 
-**Windows (PowerShell):**
-```powershell
-$env:SERVER_PORT="9999"; $env:DB_HOST="postgres-db"; $env:DB_PORT="5432"; $env:DB_DATABASE="test"; $env:DB_USERNAME="sa"; $env:DB_PASSWORD="sa"; docker-compose -f docker-compose/compose.yml up -d
-```
-
-**Linux/Mac/Git Bash:**
 ```bash
-SERVER_PORT=9999 DB_HOST=postgres-db DB_PORT=5432 DB_DATABASE=test DB_USERNAME=sa DB_PASSWORD=sa docker-compose -f docker-compose/compose.yml up -d
+docker-compose -f docker-compose/compose.yml up -d
 ```
 
 #### Verificar contenedores activos:
@@ -90,24 +84,10 @@ docker-compose -f docker-compose/compose.yml ps
 docker-compose -f docker-compose/compose.yml logs -f
 ```
 
-### 3️⃣ Verificar funcionamiento
-
-#### Acceder a los endpoints:
-- **Aplicación:** http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template
-- **Swagger UI:** http://TEMPLATE_SERVER_HOST:TEMPLATE_SERVER_PORT/v1/template/swagger-ui/index.html
-- **PgAdmin Postgres:** http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT
-
 ---
 <br>
 
 ## <a id="api-documentation"></a>📚 API Documentation
-
-### 🔗 Endpoints principales
-
-| Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| `GET` | `/v1/template` | Endpoint de prueba |
-| `GET` | `/v1/template/swagger-ui/index.html` | Endpoint de documentación |
 
 ### 📖 Swagger UI
 
