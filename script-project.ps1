@@ -180,9 +180,13 @@ if (Test-Path "README.md") {
     $pattern = '(?s)## 📝 Instrucciones para personalizar esta plantilla.*?---\s*<br>\s*'
     $cleanedContent = $readmeContent -replace $pattern, ''
     
+    # Patron para eliminar el link de settings-README.md del contenido
+    $linkPattern = '- \[💾 Configuración de Bases de Datos\]\(settings-README\.md\)\s*\n'
+    $cleanedContent = $cleanedContent -replace $linkPattern, ''
+    
     if ($readmeContent -ne $cleanedContent) {
         Set-Content "README.md" -Value $cleanedContent -NoNewline
-        Write-Host "Seccion de instrucciones eliminada del README" -ForegroundColor Green
+        Write-Host "Seccion de instrucciones y link de settings-README.md eliminados del README" -ForegroundColor Green
     } else {
         Write-Host "No se encontro la seccion de instrucciones para eliminar" -ForegroundColor Yellow
     }
@@ -195,7 +199,8 @@ Write-Host "Resumen:" -ForegroundColor Yellow
 Write-Host "   Archivos procesados: $filesProcessed" -ForegroundColor White
 Write-Host "   Reemplazos realizados: $replacementsMade" -ForegroundColor White
 
-# Eliminar archivos de configuración y script
-Write-Host "Eliminando archivos replacement-rules.json y script-project.ps1..." -ForegroundColor Cyan
+# Eliminar archivos de configuración, script y settings-README.md
+Write-Host "Eliminando archivos replacement-rules.json, script-project.ps1 y settings-README.md..." -ForegroundColor Cyan
 Remove-Item -Path "replacement-rules.json" -Force -ErrorAction SilentlyContinue
 Remove-Item -Path "script-project.ps1" -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "settings-README.md" -Force -ErrorAction SilentlyContinue
