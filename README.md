@@ -98,9 +98,9 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
 
 ### 🗄️ Administración de Base de Datos
 
-Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
+Para gestionar y administrar la base de datos TEMPLATE_MOTOR_DATABASE, se debe conectar al servidor:
 
-- **pgAdmin:** [http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT](http://TEMPLATE_SERVER_HOST:TEMPLATE_PGADMIN_PORT)
+- [http://TEMPLATE_SERVER_HOST:TEMPLATE_MOTOR_DATABASE_ADMIN_PORT](http://TEMPLATE_SERVER_HOST:TEMPLATE_MOTOR_DATABASE_ADMIN_PORT)
 
 ---
 <br>
