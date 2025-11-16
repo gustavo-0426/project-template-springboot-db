@@ -14,11 +14,11 @@ Este template soporta múltiples bases de datos. A continuación se detalla la c
 
 ### 📋 Ejemplo de configuración segura:
 ```bash
-DATABASE_HOST=mi-postgres-db
-DATABASE_PORT=5432
-DATABASE_NAME=mi_aplicacion
-DATABASE_USERNAME=app_user
-DATABASE_PASSWORD=MiContraseñaSegura123!@#
+DB_HOST=mi-postgres-db
+DB_PORT=5432
+DB_DATABASE=mi_aplicacion
+DB_USERNAME=app_user
+DB_PASSWORD=MiContraseñaSegura123!@#
 ```
 
 ## Bases de Datos Soportadas
@@ -38,11 +38,11 @@ DATABASE_PASSWORD=MiContraseñaSegura123!@#
 **1️⃣ Variables de Entorno (docker-compose\.env):**
 > **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=        # Nombre del service de PostgreSQL en docker-compose (ej: postgres-db)
-DATABASE_PORT=        # Puerto de PostgreSQL (por defecto: 5432)
-DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
-DATABASE_USERNAME=    # Usuario de PostgreSQL (ej: mi_usuario)
-DATABASE_PASSWORD=    # Contraseña segura para PostgreSQL
+DB_HOST=        # Nombre del service de PostgreSQL en docker-compose (ej: postgres-db)
+DB_PORT=        # Puerto de PostgreSQL (por defecto: 5432)
+DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_USERNAME=    # Usuario de PostgreSQL (ej: mi_usuario)
+DB_PASSWORD=    # Contraseña segura para PostgreSQL
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -81,9 +81,9 @@ services:
     container_name: project-db
     restart: always
     environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     ports:
       - "5432:5432"
     networks:
@@ -108,11 +108,11 @@ volumes:
 **1️⃣ Variables de Entorno (docker-compose\.env):**
 > **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=        # Nombre del service de MySQL en docker-compose (ej: mysql-db)
-DATABASE_PORT=        # Puerto de MySQL (por defecto: 3306)
-DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
-DATABASE_USERNAME=    # Usuario de MySQL (ej: mi_usuario)
-DATABASE_PASSWORD=    # Contraseña segura para MySQL
+DB_HOST=        # Nombre del service de MySQL en docker-compose (ej: mysql-db)
+DB_PORT=        # Puerto de MySQL (por defecto: 3306)
+DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_USERNAME=    # Usuario de MySQL (ej: mi_usuario)
+DB_PASSWORD=    # Contraseña segura para MySQL
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -151,10 +151,10 @@ services:
     container_name: project-mysql-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
-      MYSQL_DATABASE: ${DATABASE_NAME}
-      MYSQL_USER: ${DATABASE_USERNAME}
-      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     networks:
@@ -178,11 +178,11 @@ volumes:
 **1️⃣ Variables de Entorno (docker-compose\.env):**
 > **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=        # Nombre del service de SQL Server en docker-compose (ej: sqlserver-db)
-DATABASE_PORT=        # Puerto de SQL Server (por defecto: 1433)
-DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
-DATABASE_USERNAME=    # Usuario de SQL Server (ej: mi_usuario)
-DATABASE_PASSWORD=    # Contraseña segura para SQL Server (mín. 8 caracteres, mayús/minús/números/símbolos)
+DB_HOST=        # Nombre del service de SQL Server en docker-compose (ej: sqlserver-db)
+DB_PORT=        # Puerto de SQL Server (por defecto: 1433)
+DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_USERNAME=    # Usuario de SQL Server (ej: mi_usuario)
+DB_PASSWORD=    # Contraseña segura para SQL Server (mín. 8 caracteres, mayús/minús/números/símbolos)
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -221,7 +221,7 @@ services:
     container_name: project-sqlserver-db
     restart: always
     environment:
-      SA_PASSWORD: ${DATABASE_PASSWORD}
+      SA_PASSWORD: ${DB_PASSWORD}
       ACCEPT_EULA: Y
       MSSQL_PID: Express
     ports:
@@ -247,11 +247,11 @@ volumes:
 **1️⃣ Variables de Entorno (docker-compose\.env):**
 > **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_HOST=        # Nombre del service de MongoDB en docker-compose (ej: mongo-db)
-DATABASE_PORT=        # Puerto de MongoDB (por defecto: 27017)
-DATABASE_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
-DATABASE_USERNAME=    # Usuario de MongoDB (ej: mi_usuario)
-DATABASE_PASSWORD=    # Contraseña segura para MongoDB
+DB_HOST=        # Nombre del service de MongoDB en docker-compose (ej: mongo-db)
+DB_PORT=        # Puerto de MongoDB (por defecto: 27017)
+DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_USERNAME=    # Usuario de MongoDB (ej: mi_usuario)
+DB_PASSWORD=    # Contraseña segura para MongoDB
 ```
 
 **2️⃣ Dependencia Maven:**
@@ -289,9 +289,9 @@ services:
     container_name: project-mongo-db
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DATABASE_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_PASSWORD}
-      MONGO_INITDB_DATABASE: ${DATABASE_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_DATABASE}
     ports:
       - "27017:27017"
     networks:
@@ -317,9 +317,9 @@ volumes:
 **1️⃣ Variables de Entorno (docker-compose\.env):**
 > **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DATABASE_NAME=        # Nombre de tu base de datos en memoria (ej: mi_aplicacion_db)
-DATABASE_USERNAME=    # Usuario para H2 (ej: mi_usuario)
-DATABASE_PASSWORD=    # Contraseña para H2 (opcional, puede estar vacía)
+DB_DATABASE=        # Nombre de tu base de datos en memoria (ej: mi_aplicacion_db)
+DB_USERNAME=    # Usuario para H2 (ej: mi_usuario)
+DB_PASSWORD=    # Contraseña para H2 (opcional, puede estar vacía)
 ```
 
 **2️⃣ Dependencia Maven:**
