@@ -17,6 +17,7 @@
     "pom.xml",
     "README.md",
     "docker-compose/compose.yml",
-    "docker-compose/Dockerfile"
+    "docker-compose/Dockerfile",
+    "src/main/resources/application-dev.yml"
   ]
 }

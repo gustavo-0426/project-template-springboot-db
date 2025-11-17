@@ -16,10 +16,11 @@ spring:
 api:
   version: v1
 
-# swagger = http://{host}:{port}/{api.version}/template/swagger-ui/index.html
 springdoc:
   swagger-ui:
-    path: /${api.version}/template/
+    path: /${api.version}/TEMPLATE_SERVICE_NAME/           # http://{host}:{port}/{api.version}/template/swagger-ui/index.html
+  api-docs:
+    path: /${api.version}/TEMPLATE_SERVICE_NAME/api-docs   # http://{host}:{port}/{api.version}/template/api-docs
 
 logging:
   level:
