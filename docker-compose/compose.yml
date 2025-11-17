@@ -10,7 +10,7 @@ services:
       SERVER_PORT: ${SERVER_PORT}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
-      DB_DATABASE: ${DB_DATABASE}
+      DB_NAME: ${DB_NAME}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
     ports:
@@ -27,7 +27,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "${DATABASE_PORT}:${DATABASE_PORT}"
     networks:
