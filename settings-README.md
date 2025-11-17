@@ -16,7 +16,7 @@ Este template soporta múltiples bases de datos. A continuación se detalla la c
 ```bash
 DB_HOST=mi-postgres-db
 DB_PORT=5432
-DB_DATABASE=mi_aplicacion
+DB_NAME=mi_aplicacion
 DB_USERNAME=app_user
 DB_PASSWORD=MiContraseñaSegura123!@#
 ```
@@ -40,7 +40,7 @@ DB_PASSWORD=MiContraseñaSegura123!@#
 ```bash
 DB_HOST=        # Nombre del service de PostgreSQL en docker-compose (ej: postgres-db)
 DB_PORT=        # Puerto de PostgreSQL (por defecto: 5432)
-DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
 DB_USERNAME=    # Usuario de PostgreSQL (ej: mi_usuario)
 DB_PASSWORD=    # Contraseña segura para PostgreSQL
 ```
@@ -57,7 +57,7 @@ DB_PASSWORD=    # Contraseña segura para PostgreSQL
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}?sslmode=disable
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -83,7 +83,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     networks:
@@ -110,7 +110,7 @@ volumes:
 ```bash
 DB_HOST=        # Nombre del service de MySQL en docker-compose (ej: mysql-db)
 DB_PORT=        # Puerto de MySQL (por defecto: 3306)
-DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
 DB_USERNAME=    # Usuario de MySQL (ej: mi_usuario)
 DB_PASSWORD=    # Contraseña segura para MySQL
 ```
@@ -127,7 +127,7 @@ DB_PASSWORD=    # Contraseña segura para MySQL
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -152,7 +152,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
@@ -180,7 +180,7 @@ volumes:
 ```bash
 DB_HOST=        # Nombre del service de SQL Server en docker-compose (ej: sqlserver-db)
 DB_PORT=        # Puerto de SQL Server (por defecto: 1433)
-DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
 DB_USERNAME=    # Usuario de SQL Server (ej: mi_usuario)
 DB_PASSWORD=    # Contraseña segura para SQL Server (mín. 8 caracteres, mayús/minús/números/símbolos)
 ```
@@ -197,7 +197,7 @@ DB_PASSWORD=    # Contraseña segura para SQL Server (mín. 8 caracteres, mayús
 ```yaml
 spring:
   datasource:
-    url: jdbc:sqlserver://${DB_HOST}:${DB_PORT};databaseName=${DB_DATABASE};encrypt=false;trustServerCertificate=true
+    url: jdbc:sqlserver://${DB_HOST}:${DB_PORT};databaseName=${DB_NAME};encrypt=false;trustServerCertificate=true
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -249,7 +249,7 @@ volumes:
 ```bash
 DB_HOST=        # Nombre del service de MongoDB en docker-compose (ej: mongo-db)
 DB_PORT=        # Puerto de MongoDB (por defecto: 27017)
-DB_DATABASE=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
+DB_NAME=        # Nombre de tu base de datos (ej: mi_aplicacion_db)
 DB_USERNAME=    # Usuario de MongoDB (ej: mi_usuario)
 DB_PASSWORD=    # Contraseña segura para MongoDB
 ```
@@ -270,7 +270,7 @@ spring:
     mongodb:
       host: ${DB_HOST}
       port: ${DB_PORT}
-      database: ${DB_DATABASE}
+      database: ${DB_NAME}
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
       authentication-database: admin
@@ -291,7 +291,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
-      MONGO_INITDB_DATABASE: ${DB_DATABASE}
+      MONGO_INITDB_NAME: ${DB_NAME}
     ports:
       - "27017:27017"
     networks:
@@ -317,7 +317,7 @@ volumes:
 **1️⃣ Variables de Entorno (docker-compose\.env):**
 > **⚠️ IMPORTANTE:** Configura estos valores según tu entorno:
 ```bash
-DB_DATABASE=        # Nombre de tu base de datos en memoria (ej: mi_aplicacion_db)
+DB_NAME=        # Nombre de tu base de datos en memoria (ej: mi_aplicacion_db)
 DB_USERNAME=    # Usuario para H2 (ej: mi_usuario)
 DB_PASSWORD=    # Contraseña para H2 (opcional, puede estar vacía)
 ```
@@ -335,7 +335,7 @@ DB_PASSWORD=    # Contraseña para H2 (opcional, puede estar vacía)
 ```yaml
 spring:
   datasource:
-    url: jdbc:h2:mem:${DB_DATABASE}
+    url: jdbc:h2:mem:${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.h2.Driver
