@@ -181,7 +181,7 @@ if (Test-Path "README.md") {
     $cleanedContent = $readmeContent -replace $pattern, ''
     
     # Patron para eliminar el link de settings-README.md del contenido
-    $linkPattern = '- \[.* Configuraci.n de Bases de Datos\]\(settings-README\.md\)\s*\n'
+    $linkPattern = '- \[.+ Configuraci.+n de Bases de Datos\]\(settings-README\.md\)\s*\n'
     $cleanedContent = $cleanedContent -replace $linkPattern, ''
     
     if ($readmeContent -ne $cleanedContent) {
