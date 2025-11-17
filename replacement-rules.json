@@ -16,6 +16,7 @@
   "files": [
     "pom.xml",
     "README.md",
-    "docker-compose/compose.yml"
+    "docker-compose/compose.yml",
+    "docker-compose/Dockerfile"
   ]
 }

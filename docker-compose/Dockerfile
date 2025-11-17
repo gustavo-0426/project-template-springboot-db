@@ -9,7 +9,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     update-ca-certificates
 
-WORKDIR /app/api-template
+WORKDIR /app/TEMPLATE_REPO_NAME
 
 # Copiar solo pom.xml para cachear dependencias
 COPY ../pom.xml .
@@ -26,17 +26,17 @@ RUN mvn clean package -DskipTests -B
 
 FROM eclipse-temurin:21-jre-alpine
 
-# Variable de entorno para puerto
-ENV SERVER_PORT=
+# Variable de entorno por defecto para el puerto del servidor 
+ENV SERVER_PORT=8080
 
 # Crear usuario no-root para seguridad
 RUN addgroup -g 1001 -S appuser && \
     adduser -S -D -H -u 1001 -s /sbin/nologin -G appuser appuser
 
-WORKDIR /home/api-template
+WORKDIR /home/TEMPLATE_REPO_NAME
 
 # Copiar JAR y cambiar permisos
-COPY --from=build /app/api-template/target/*.jar ./api-template.jar
+COPY --from=build /app/TEMPLATE_REPO_NAME/target/*.jar ./TEMPLATE_REPO_NAME.jar
 
 # Cambiar a usuario no-root
 USER appuser
@@ -44,4 +44,4 @@ USER appuser
 # Exponer el puerto configurado
 EXPOSE ${SERVER_PORT}
 
-ENTRYPOINT ["java","-jar","./api-template.jar"]
+ENTRYPOINT ["java","-jar","./TEMPLATE_REPO_NAME.jar"]
